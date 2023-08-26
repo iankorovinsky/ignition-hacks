@@ -55,9 +55,9 @@ function Navbar() {
         priority: false
     },
     {
-        name: "About",
-        link: "/about",
-        id: "about",
+        name: "Record",
+        link: "/record",
+        id: "record",
         priority: false
     },
     {

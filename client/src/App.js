@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
-import About from './pages/About'
+import Record from './pages/Record'
 import Form from './pages/Form'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
           mode='wait'>
             <Routes>
               <Route path="/" exact element={<Home />} />
-              <Route path="/about" exact element={<About />} />
+              <Route path="/record" exact element={<Record />} />
               <Route path="/form" exact element={<Form />} />
             </Routes>
           </AnimatePresence>
