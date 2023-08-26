@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg: hsl(216, 100%, 99%);
+  --bg-2: hsl(0, 0%, 100%);
+  --bg-accent: #eff1f3;
+  --text-color: #2c313d;
+  --nav-size: 70px;
+  --border-radius: 8px;
+  --speed: 500ms;
+  --dark: #101315;
+  --light: #eeeeee;
+  --background-gradient: linear-gradient(10deg, #d5f2e4,  #d5f2e4);
+  --gradient: linear-gradient(#ffffff, #e0e0e0);
+  --gradient2: linear-gradient(15deg, #04ea00, #00d17d);
+  --gradient3: linear-gradient(15deg, #b648ff, #ef5dff);
+  --line_color : #555555 ;
+  --back_color : rgb(170, 243, 197);
+}

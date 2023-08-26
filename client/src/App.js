@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { Suspense } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { AnimatePresence } from 'framer-motion'
+
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import About from './pages/About'
 
 const App = () => {
   return (
-    <div className=''>App</div>
+    <div className="App">
+      <BrowserRouter>
+          <Suspense fallback={<div>Page Loading...</div>}>
+          <Navbar />
+          <AnimatePresence
+          mode='wait'>
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/about" exact element={<About />} />
+            </Routes>
+          </AnimatePresence>
+          </Suspense>
+      </BrowserRouter>
+  </div>
   )
 }
 
