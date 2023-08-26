@@ -2,14 +2,14 @@ from moviepy.editor import VideoFileClip
 import io
 import openai
 import json
+import base64
 
 #OpenAI API Key
 openai.api_key = "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" 
 
-def get_text():
+def get_text(url):
 
-    # Load the video
-    video = VideoFileClip("sample-video.py.mp4")
+    video = VideoFileClip("temp.mp4")
 
     # Extract audio
     audio = video.audio
@@ -25,5 +25,6 @@ def get_text():
     response = openai.Audio.translate("whisper-1", audio_file)
 
     # The transcribed text
+    print(response.get("text"))
     return response.get("text")
 

@@ -86,3 +86,28 @@ const About = () => {
 }
 
 export default About
+
+const fs = require('fs');
+const fetch = require('node-fetch');
+const FormData = require('form-data');
+
+const form = new FormData();
+const fileStream = fs.createReadStream('image.jpg');
+form.append('file', fileStream);
+
+const options = {
+  method: 'POST',
+  body: form,
+  headers: {
+    "Authorization": "4eee2cb8-3210-407c-9d3f-fbb8dcf09995",
+  },
+};
+
+fetch("https://api.nftport.xyz/v0/files", options)
+  .then(response => {
+    return response.json()
+  })
+  .then(responseJson => {
+    // Handle the response
+    console.log(responseJson);
+  })
