@@ -65,7 +65,13 @@ function Navbar() {
         link: "/form",
         id: "form",
         priority: false
-    }
+    },
+    {
+      name: "Feedback",
+      link: "/feedback",
+      id: "feedback",
+      priority: false
+  }
 ]
 
     return (

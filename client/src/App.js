@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Record from './pages/Record'
 import Form from './pages/Form'
+import Feedback from './pages/Feedback'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
               <Route path="/" exact element={<Home />} />
               <Route path="/record" exact element={<Record />} />
               <Route path="/form" exact element={<Form />} />
+              <Route path="/feedback" exact element={<Feedback />} />
             </Routes>
           </AnimatePresence>
           </Suspense>
