@@ -59,6 +59,12 @@ function Navbar() {
         link: "/about",
         id: "about",
         priority: false
+    },
+    {
+        name: "Form",
+        link: "/form",
+        id: "form",
+        priority: false
     }
 ]
 
