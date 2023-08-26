@@ -13,6 +13,24 @@ const Form = () => {
         e.preventDefault()
         console.log(genre)
         console.log(difficulty)
+
+        const response = await fetch('endpoint-url', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                genre: genre,
+                difficulty: difficulty
+            })
+        })
+        const data = await response.json()
+        const interview_question = data['question']
+
+        localStorage.setItem('interview_question', interview_question)
+
+        navigate('/feedback')
+        window.location.reload(); 
     }
 
   return (

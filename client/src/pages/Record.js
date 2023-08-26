@@ -35,7 +35,6 @@ const About = () => {
         };
         
         reader.readAsArrayBuffer(combinedBlob);
-    
         setIsRecordingStopped(false); // Reset the flag
     };
   
