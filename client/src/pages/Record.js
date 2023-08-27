@@ -11,39 +11,10 @@ const Record = () => {
     const [blobData, setBlobData] = useState();
     const [isRecordingStopped, setIsRecordingStopped] = useState(false);
 
-    const uploadToIPFS = async () => {
-      if (blobData == undefined) {
-        setTimeout(() => {
-          console.log("Delayed output");
-        }, 2000);
-      }
-
-      console.log("blobData", blobData)
-      const file = new File([blobData], "temp-video.mp4"); // Replace "your_file_content" with the actual file content
-    
-      const formData = new FormData();
-      formData.append("file", file);
-    
-      const response = await fetch("https://api.nftport.xyz/v0/files", {
-        method: "POST",
-        headers: {
-          Authorization: "4eee2cb8-3210-407c-9d3f-fbb8dcf09995"
-        },
-        body: formData
-      });
-    
-      if (response.ok) {
-        const jsonResponse = await response.json();
-        console.log("jsonResponse", jsonResponse)
-        return jsonResponse;
-      } else {
-        throw new Error("File upload failed");
-      }
-    };
-
     const handleConvertToBinary = async () => {
         console.log('starting conversion')
         console.log(recordedChunks)
+
         if (recordedChunks.length === 0) {
           console.log('recordedChunks 0')
           return;
@@ -54,11 +25,11 @@ const Record = () => {
         setIsRecordingStopped(false); // Reset the flag
 
         // Concatenate the recorded chunks into a single Blob
-        const combinedBlob = new Blob(recordedChunks, { type: 'video/mp4' });
+        const combinedBlob = new Blob(recordedChunks, { type: 'audio/webm' });
         console.log("combinedBlob: ", combinedBlob)
 
         try {
-          const file = new File([combinedBlob], "temp-video.mp4"); // Replace "your_file_content" with the actual file content
+          const file = new File([combinedBlob], "temp-audio.webm"); 
           
           console.log("file", file)
     
@@ -72,9 +43,16 @@ const Record = () => {
             },
   
             body: formData
-          }).then(res => res.json()).then(data => console.log(data));
-      
-        
+          }).then(res => res.json()).then((data) => {
+            fetch('https://ignition-hacks-2023.nn.r.appspot.com/get_analysis ', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                blob: combinedBlob
+              })
+          })}).then(res => console.log('blob sent!!!'))
         } catch (error) {
           console.log("error", error)
         }
@@ -82,12 +60,12 @@ const Record = () => {
   
     const handleStartRecording = () => {
       console.log('recording started')
-      const constraints = { audio: true, video: true };
+      const constraints = { audio: true, video: false };
 
       navigator.mediaDevices.getUserMedia(constraints)
         .then((stream) => {
           const videoStream = webcamRef.current.stream;
-          mediaRecorderRef.current = new MediaRecorder(videoStream, { mimeType: 'video/webm' });
+          mediaRecorderRef.current = new MediaRecorder(stream, { mimeType: 'audio/webm' });
 
           mediaRecorderRef.current.ondataavailable = (event) => {
             if (event.data.size > 0) {
