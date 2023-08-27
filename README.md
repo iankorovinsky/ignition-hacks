@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/badge/pull%20requests%20merged-4-blue" alt="Pull Requests Merged">
     </a>
     <a href="https://github.com/{owner}/{repo}/commits">
-    <img src="https://img.shields.io/badge/commits-100+-blue" alt="GitHub Commits"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/angeladev333/hack-the-6ix">
+    <img src="https://img.shields.io/badge/commits-100+-blue" alt="GitHub Commits"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/iankorovinsky/ignition-hacks">
 <br/><br/>
     <img src="https://raw.githubusercontent.com/BraveUX/for-the-badge/master/src/images/badges/0-percent-optimized.svg" />
                 <img src="https://raw.githubusercontent.com/BraveUX/for-the-badge/master/src/images/badges/60-percent-of-the-time-works-every-time.svg" />
