@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { json } from 'react-router-dom';
@@ -10,6 +11,9 @@ const Record = () => {
     const [recordedChunks, setRecordedChunks] = useState([]);
     const [isRecordingStopped, setIsRecordingStopped] = useState(false);
 
+    const navigate = useNavigate()
+
+ 
     const handleConvertToBinary = async () => {
         console.log('starting conversion')
         console.log(recordedChunks)
@@ -46,16 +50,42 @@ const Record = () => {
   
             body: formData
           }).then(res => res.json()).then((data) => {
-            fetch('https://ignition-hacks-2023.nn.r.appspot.com/upload ', {
+            const bucketName = 'ignition-hacks-2023.appspot.com';
+            const fileName = 'audio.webm';
+            const accessToken = "ya29.a0AfB_byApOvL_W9wDORHVpDmTP3bVbihzEFKs1Kk7O-21Qmh2Wgu3IKSV9l2d_JUfVqbW8P3bffaqlIV8wVxq2-aRbj6H9QjmZ_yV-Lx8GSHDFIV-7VDiDmVqnHFoz1lULhyjoF1N-vbcYmrYaBXEc1WyQ0zLvPcWePM0hv8zaCgYKAZsSARASFQHsvYlsgmsqX25lzqtmWL5GvVJ5Bg0175"; // Obtain this token securely
+            const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
+            fetch(apiUrl, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'audio/webm',
+              },
+              body: combinedBlob
+              //blob: combinedBlob
+                            
+          })}).then(data => {
+            fetch('https://ignition-hacks-2023.nn.r.appspot.com/download_mp3', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({
-                //blob: combinedBlob
-                audio: formData2 
+            }).then(data2 => {
+              fetch('https://ignition-hacks-2023.nn.r.appspot.com/feedback', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              }).then(res => res.json()).then(data3 => {
+                console.log('data3', data3)
+                const feedback = data3["feedback"]
+                console.log('feedback', feedback)
+                localStorage.setItem('feedback', feedback)
+
+                navigate('/feedback')
+                window.location.reload(); 
               })
-          })}).then(res => console.log('blob sent!!!'))
+            })
+          })
         } catch (error) {
           console.log("error", error)
         }
@@ -101,13 +131,21 @@ const Record = () => {
       }, [isRecordingStopped]);
 
   return (
-    <div>
-      <Webcam audio={true} ref={webcamRef} />
-      <button onClick={handleStartRecording}>Start Recording</button>
-      <button onClick={handleStopRecording}>Stop Recording</button>
-      <h1>asdsad</h1>
+    <div className='h-screen text-white'>
+      <div className='flex justify-center'>
+        <div className='flex flex-col'>
+          <h1 className='text-center mb-8 text-4xl'>Question: {localStorage.getItem('interview_question')}</h1>
+          <Webcam audio={true} ref={webcamRef} className='rounded-2xl max-w-1'/>
+          <div className='flex justify-around mt-8'>
+          <button onClick={handleStartRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Start Recording</button>
+          <button onClick={handleStopRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Stop Recording</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Record
+
+

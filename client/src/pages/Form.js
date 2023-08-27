@@ -1,45 +1,45 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaImage } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
 import './page-styles/Form.css'
 
 
 const Form = () => {
-    const [genre, setGenre] = useState("genre1");
+    const [genre, setGenre] = useState("behavioural");
     const [difficulty, setDifficulty] = useState("easy");
     const navigate = useNavigate(); // in case needed to navigate anywhere
+
+
 
     const onSubmit = async (e) => {
         e.preventDefault()
         console.log(genre)
         console.log(difficulty)
 
-        const response = await fetch('endpoint-url', {
+        const response = await fetch(`https://ignition-hacks-2023.nn.r.appspot.com/get_question?type=${genre}&difficulty=${difficulty}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                genre: genre,
-                difficulty: difficulty
-            })
         })
+
         const data = await response.json()
-        const interview_question = data['question']
+        console.log(data['text'])
+        const interview_question = data['text']
 
         localStorage.setItem('interview_question', interview_question)
 
-        navigate('/feedback')
+        navigate('/record')
         window.location.reload(); 
     }
 
   return (
-    <div className='relative w-full h-[1050px] overflow-hidden text-left text-[24px] text-dimgray font-inter'>
-        <div className='p-24 rounded-xl text-white'>
-            <h1 className='text-center text-8xl font-bold'>Select Your</h1>
-            <h1 className='text-center text-8xl font-bold text-[#B489E1]'>Interview</h1>
-            <div className='flex justify-center'>
+    <div className='relative w-full h-screen overflow-hidden text-left text-[24px] text-dimgray font-inter text-white'>
+        <div className='p-24 rounded-xl text-violet-100'>
+        <h1 className='text-center text-8xl font-bold'>Select Your</h1>
+        <h1 className='text-center text-8xl font-bold text-[#B489E1]'>Interview</h1>
+        <div className='flex justify-center'>
             <form
                     className="flex flex-col gap-2 mt-2"
                     onSubmit={onSubmit}
@@ -47,9 +47,10 @@ const Form = () => {
                     <label htmlFor='genre' className='text-3xl font-bold text-white mt-10'>Genre</label>
                     <div className="box">
                         <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
-                            <option value="genre1">Genre1</option>
-                            <option value="genre2">Genre2</option>
-                            <option value="genre3">Genre3</option>
+                            <option value="behavioural">behavioural</option>
+                            <option value="situational">situational</option>
+                            <option value="motivation">motivational</option>
+                            <option value="personal">personal</option>
                         </select>
                     </div>
 
@@ -65,7 +66,6 @@ const Form = () => {
                 </form>
             </div>
         </div>
-
     </div>
   )
 }
