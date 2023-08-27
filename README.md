@@ -19,11 +19,11 @@ Join us on this exciting journey as we fuse the prowess of AI with the aspiratio
 
 spleef.ai is an innovative interview assistant that employs cutting-edge AI technology to provide you with real-time feedback on your interview question responses. 🤖🎤
 
-Upon starting, users are guided to a screen where they can select the type of question they wish to practice. The options include a range of difficulty levels: easy, medium, and hard and different interview category formats: behavioral, situational, motivational, and personal. This versatility ensures that users can tailor their practice to match their specific interview needs. 📝🔍
+Upon starting, users are guided to a screen where they can select the type of question they wish to practice. The options include a range of difficulty levels: easy, medium, and hard and different interview category formats: behavioural, situational, motivational, and personal. This versatility ensures that users can tailor their practice to match their specific interview needs. 📝🔍
 
-Having made their selection, users are presented with the generated interview question. This dynamic aspect of spleef.ai ensures that every practice session is unique, mirroring the unpredictability of real interviews. Once users feel prepared to tackle the question, they can start recording their response. The platform seamlessly integrates with your device's recording capabilities, making the process straightforward and intuitive. 🎥🔴
+Having made their selection, users are presented with the generated interview question. This dynamic aspect of spleef.ai ensures that every practice session is unique, mirroring the unpredictability of real interviews. Once users feel prepared to tackle the question, they can start recording their responses. The platform seamlessly integrates with your device's recording capabilities, making the process straightforward and intuitive. 🎥🔴
 
-And here's where the magic truly happens! Once the response recording is complete, spleef.ai's AI engine kicks into action. It meticulously analyzes your response, considering factors like content, coherence, tone, and more. Within moments, you'll receive comprehensive feedback on your performance. This feedback isn't generic; it's tailored to your specific response and provides insights that guide you towards improvement. Whether it's pointing out areas for enhancement, highlighting strengths, or suggesting ways to structure your answers more effectively – the feedback is your personalized roadmap to success. 🗺️📊
+And here's where the magic truly happens! Once the response recording is complete, spleef.ai's AI engine kicks into action. It meticulously analyzes your response, considering factors like content, coherence, tone, and more. Within moments, you'll receive comprehensive feedback on your performance. This feedback isn't generic; it's tailored to your specific response and provides insights that guide you toward improvement. Whether it's pointing out areas for enhancement, highlighting strengths, or suggesting ways to structure your answers more effectively – the feedback is your personalized roadmap to success. 🗺️📊
 
 
 ## 💬 How we built spleef.ai 🛠️
@@ -45,14 +45,14 @@ Deploying our AI-powered interview assistant on Google Cloud presented a unique 
 Translating our creative visions from a Figma prototype to a functional React application posed a formidable challenge. The intricacies of design integration and maintaining the visual essence while ensuring seamless user interactions were no small feat. Through iterative design refinements and meticulous coding, we transformed our ambitious designs into a user-friendly reality.
 
 ### 💾 Parsing Data without Saving Audio as Files 📊
-One of the challenges we encountered was parsing interview audio data without the luxury of saving audio files due to backend constraints hosted on Google Cloud. This required us to engineer an elegant solution for processing and analyzing data on-the-fly, utilizing variables without relying on traditional file storage methods. We devised an efficient method to handle and glean insights from this real-time data flow.
+One of the challenges we encountered was parsing interview audio data without the luxury of saving audio files due to backend constraints hosted on Google Cloud. This required us to engineer an elegant solution for processing and analyzing data on the fly, utilizing variables without relying on traditional file storage methods. We devised an efficient method to handle and glean insights from this real-time data flow.
 
 ## 🌟 Accomplishments We Celebrate at spleef.ai 🏆🎉
 
-The journey of crafting spleef.ai has been adorned with numerous accomplishments that ignite our pride and ignite our passion. Here are the milestones that stand as a testament to our dedication:
+The journey of crafting spleef.ai has been adorned with numerous accomplishments that ignite our passion. Here are the milestones that stand as a testament to our dedication:
 
 ### 🎨 Visually Appealing Front-End Creation 🚀
-One of our prime accomplishments is the creation of a visually captivating front-end interface. We embarked on a design journey that seamlessly blended aesthetics with user-friendliness. Through meticulous attention to detail and creative flair, we sculpted an interface that engages users and offers an immersive experience, making interview preparation an enjoyable endeavor.
+One of our prime accomplishments is the creation of a visually captivating front-end interface. We embarked on a design journey that seamlessly blended aesthetics with user-friendliness. Through meticulous attention to detail and creative flair, we sculpted an interface that engages users and offers an immersive experience, making interview preparation an enjoyable endeavour.
 
 ### ☁️ Dual Deployment on Vercel and Google Cloud 🌐
 Deploying both our front-end on Vercel and our back-end on Google Cloud as a seamless API showcases our technical prowess. This dual deployment not only ensures optimal performance but also reflects our dedication to providing a consistent experience to users across various platforms. Our achievement lies in the synchronization of these components, delivering a unified solution to our users.
@@ -61,7 +61,7 @@ Deploying both our front-end on Vercel and our back-end on Google Cloud as a sea
 As a team, we take pride in our journey of honing our Figma design skills. The evolution from our initial design drafts to the polished product signifies our commitment to growth and improvement. We embraced challenges, welcomed feedback, and iterated tirelessly, resulting in an elevated level of design proficiency that enhances the overall user experience.
 
 ## 🚀 Lessons Learned from spleef.ai's Journey 📚
-The creation of spleef.ai, our trailblazing interview assistant, was not only an endeavor of innovation but also a profound learning experience. Throughout this odyssey, we gathered invaluable insights that shaped our skills and perspectives:
+The creation of spleef.ai, our trailblazing interview assistant, was not only an endeavour of innovation but also a profound learning experience. Throughout this odyssey, we gathered invaluable insights that shaped our skills and perspectives:
 
 ### 🔧 Converting Figma Prototype to Visual Design 🎨
 Converting a Figma prototype into a functional visual design was a transformative lesson. The intricacies of maintaining the design's integrity while optimizing for user interactions necessitated a deep dive into design principles and front-end development. This process honed our eye for detail and highlighted the significance of user-centric design.
@@ -84,7 +84,9 @@ To foster a more interactive and personalized learning experience, we're introdu
 ### 🔍 Technical Interview Support with AI Tutors 💻
 Technical interviews can be a daunting challenge. That's why we're expanding spleef.ai's capabilities to encompass coding problem feedback through AI tutors. Whether you're navigating algorithms, data structures, or intricate coding challenges, spleef.ai will be there to guide you, providing insights to refine your problem-solving skills and excel in technical assessments.
 
-As we embark on this exciting journey into the future, the core essence of spleef.ai remains unchanged – to empower individuals, nurture their growth, and pave their way to interview success. Through continuous innovation and a commitment to excellence, we're poised to redefine interview preparation as we know it. Join us as we revolutionize the art of mastering interviews with spleef.ai! 🚀🔮
+As we embark on this exciting journey into the future, the core essence of spleef.ai remains unchanged – to empower individuals, nurture their growth, and pave their way to interview success. Through continuous innovation and a commitment to excellence, we're poised to redefine interview preparation as we know it. 
+
+Join us as we revolutionize the art of mastering interviews with spleef.ai! 🚀🔮
 
 
 
