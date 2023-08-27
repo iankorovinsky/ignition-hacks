@@ -52,7 +52,7 @@ const Record = () => {
           }).then(res => res.json()).then((data) => {
             const bucketName = 'ignition-hacks-2023.appspot.com';
             const fileName = 'audio.webm';
-            const accessToken = "ya29.a0AfB_byCtKfAHYakwZ_88HRyEdKCFcxhqdHkFok5NuLNxk41FoMfT6XHWbmozjRyZP74Y7GTyFOJc63Vm6dft08GjYnG75qY2m2lIecuZn_ZkdGUWMqIfh_ABF93xvkLd3Cq2Fwg3Weee7JX4XA093BIMMg1hSXhfnIz-hQaCgYKAd4SARASFQHsvYlsOFTvklSvHPQwIw787Cdsdg0173"; // Obtain this token securely
+            const accessToken = "ya29.a0AfB_byApOvL_W9wDORHVpDmTP3bVbihzEFKs1Kk7O-21Qmh2Wgu3IKSV9l2d_JUfVqbW8P3bffaqlIV8wVxq2-aRbj6H9QjmZ_yV-Lx8GSHDFIV-7VDiDmVqnHFoz1lULhyjoF1N-vbcYmrYaBXEc1WyQ0zLvPcWePM0hv8zaCgYKAZsSARASFQHsvYlsgmsqX25lzqtmWL5GvVJ5Bg0175"; // Obtain this token securely
             const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
             fetch(apiUrl, {
               method: 'POST',

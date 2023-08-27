@@ -14,7 +14,7 @@ const Feedback = () => {
       <div className="absolute top-[calc(50%_-_321px)] left-[calc(50%_-_432px)] rounded-3xl bg-gray-100 bg-opacity-5 shadow-[0px_60px_220px_rgba(0,_0,_0,_0.35)] w-[891px] h-[631px]" />
       <div className="absolute top-[calc(50%_-_291px)] left-[calc(50%_-_392px)] rounded-3xl [background:linear-gradient(180deg,_rgba(255,_255,_255,_0.8),_#fff)] shadow-[0px_1px_4px_rgba(0,_0,_0,_0.05)] w-[830px] h-[582px] overflow-hidden">
         <div className="overflow-y-scroll absolute w-[calc(100%_+_44px)] top-[-13px] right-[-21px] left-[-23px] [background:linear-gradient(180deg,_rgba(0,_187,_255,_0.2),_rgba(196,_77,_255,_0.4))] shadow-[0px_20px_40px_rgba(0,_0,_0,_0.15)] h-[614px] rounded-3xl">
-          <div className="absolute left-[116px] flex items-center w-[663px] h-[1298px]">
+          <div className="absolute top-[80px] left-[116px] flex items-center w-[663px] h-[1298px]">
 
               <p className="m-0">
                 {localStorage.getItem('feedback')}
