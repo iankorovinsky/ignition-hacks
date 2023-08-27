@@ -1,15 +1,22 @@
 from moviepy.editor import VideoFileClip
 import io
 import openai
+from io import BytesIO
 import json
 import base64
+import requests
 
 #OpenAI API Key
 openai.api_key = "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" 
 
-def get_text(url):
-
-    video = VideoFileClip("temp.mp4")
+def get_text(blob_received):
+    """
+    response = requests.get(url)
+    vid = response.content
+    # Use BytesIO to convert bytes to a file-like object so it can be used by MoviePy
+    video_io = BytesIO(vid)
+    print("It worked!")
+    video = VideoFileClip(video_io)
 
     # Extract audio
     audio = video.audio
@@ -20,11 +27,13 @@ def get_text(url):
 
     # Read the audio file into a bytes-like object
     audio_file= open("temp_audio.mp3", "rb")
-
+    """
+    byte_io = BytesIO(blob_received)
     # Transcribe using Whisper ASR API
-    response = openai.Audio.translate("whisper-1", audio_file)
+    response_2 = openai.Audio.translate("whisper-1", byte_io)
 
     # The transcribed text
-    print(response.get("text"))
-    return response.get("text")
+    print(response_2)
+    return response_2.get("text")
+
 
