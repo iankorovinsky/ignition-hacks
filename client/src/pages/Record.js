@@ -52,7 +52,7 @@ const Record = () => {
           }).then(res => res.json()).then((data) => {
             const bucketName = 'ignition-hacks-2023.appspot.com';
             const fileName = 'audio.webm';
-            const accessToken = "ya29.a0AfB_byBz_SVcGemzdD5UysPvVop_CwwZoxXKUhoWum_tsnPN3_y7kIT0C_bF8LGOX87IxcFQfcq3RaE2XWkyX9IqlK16406ArCXep4MnIXFBvh0w0OyVPN3GZ4BE827YbWixCalKbBJvlgiGLjWlNUmNE7XdORkDCAvQjQaCgYKAaQSARASFQHsvYlsQ6orCi33o9aHC3tA1eBVGw0173"; // Obtain this token securely
+            const accessToken = "ya29.a0AfB_byCtKfAHYakwZ_88HRyEdKCFcxhqdHkFok5NuLNxk41FoMfT6XHWbmozjRyZP74Y7GTyFOJc63Vm6dft08GjYnG75qY2m2lIecuZn_ZkdGUWMqIfh_ABF93xvkLd3Cq2Fwg3Weee7JX4XA093BIMMg1hSXhfnIz-hQaCgYKAd4SARASFQHsvYlsOFTvklSvHPQwIw787Cdsdg0173"; // Obtain this token securely
             const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
             fetch(apiUrl, {
               method: 'POST',
@@ -70,11 +70,20 @@ const Record = () => {
                 'Content-Type': 'application/json',
               },
             }).then(data2 => {
-              console.log("data2", data2)
-              const feedback = data2["feedback"]
-              console.log(feedback)
-              localStorage.setItem('feedback', feedback)
-      
+              fetch('https://ignition-hacks-2023.nn.r.appspot.com/feedback', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              }).then(res => res.json()).then(data3 => {
+                console.log('data3', data3)
+                const feedback = data3["feedback"]
+                console.log('feedback', feedback)
+                localStorage.setItem('feedback', feedback)
+
+                navigate('/feedback')
+                window.location.reload(); 
+              })
             })
           })
         } catch (error) {
