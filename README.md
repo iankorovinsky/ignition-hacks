@@ -4,8 +4,8 @@
     <a href="https://github.com/simple-icons/simple-icons/actions?query=workflow%3AVerify+branch%3Adevelop">
         <img src="https://img.shields.io/github/actions/workflow/status/simple-icons/simple-icons/verify.yml?branch=develop&logo=github&label=tests" alt="Build status"/>
     </a>
-    <a href="https://hits.dwyl.com/angeladev333/hack-the-6ix">
-        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fangeladev333%2Fhack-the-6ix.json%3Fcolor%3Dpink" alt="HitCount"/>
+    <a href="https://hits.dwyl.com/iankorovinsky/ignition-hacks">
+        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Fiankorovinsky%2Fignition-hacks.json%3Fcolor%3Dpink" alt="HitCount"/>
     </a>
 </p>
 
