@@ -5,6 +5,7 @@ import requests
 import analyze_text
 from flask import Flask, request
 from flask_cors import CORS
+import logging
 
 #API
 
@@ -15,6 +16,7 @@ question_spawned = ""
 
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
+    print("Hello Humi!")
     return "Hello Humi!"
 
 @app.route('/get_question', methods=['POST'])
@@ -25,8 +27,16 @@ def get_question():
 
 @app.route('/get_analysis', methods=['POST'])
 def get_analysis():
-    text = vta.get_text(request.args["blob"])
+    print("Entering get text method")
+    try:
+        text = vta.get_text(request.args["blob"])
+    except Exception as error:
+        # handle the exception
+        print("An exception occurred:", error)
+    print("received text to speech in main")
     feedback = analyze_text.generate_text(question_spawned, text)
+    print("received feedback, returning:")
+    print(feedback)
     return feedback
 
 if __name__ == '__main__':

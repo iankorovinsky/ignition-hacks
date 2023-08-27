@@ -5,6 +5,7 @@ import re
 openai.api_key = "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"
 
 def generate_text(question, text):
+        print("generating gpt")
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -19,8 +20,10 @@ def generate_text(question, text):
             frequency_penalty=0,
             presence_penalty=0.6,
         )
+        print("received gpt")
         content = response.choices[0].message.content    
         print(content)
+        print("returning gpt")
         return content
 
 

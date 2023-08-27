@@ -28,9 +28,18 @@ def get_text(blob_received):
     # Read the audio file into a bytes-like object
     audio_file= open("temp_audio.mp3", "rb")
     """
-    byte_io = BytesIO(blob_received)
+    print("converting to byte_io")
+    try:
+        byte_io = BytesIO(blob_received)
+    except Exception as error:
+        # handle the exception
+        print("An exception occurred:", error)
     # Transcribe using Whisper ASR API
-    response_2 = openai.Audio.translate("whisper-1", byte_io)
+    try:
+        response_2 = openai.Audio.translate("whisper-1", byte_io)
+    except Exception as error:
+        # handle the exception
+        print("An exception occurred:", error)
 
     # The transcribed text
     print(response_2)
