@@ -51,7 +51,7 @@ const Record = () => {
           }).then(res => res.json()).then((data) => {
             const bucketName = 'ignition-hacks-2023.appspot.com';
             const fileName = 'audio.webm';
-            const accessToken = "ya29.a0AfB_byDrEdLc6pCfruAa-RYhmyIWbvi4E_fHDm5pWwiaNDv_DWAu9PzWIE8mkvWUkrw6wMa-C8kxqoW0w-3DJYyWbhyUwsfwIphVa0FiKjitSBeH0PUUw-w_ulYbzIQHp2TKH0Jn0xe6nGVn_XLgQOJDD4uUG81VVIS-LwaCgYKAXESARASFQHsvYlsgJxCGOqy3sHf_J2dhEg2pw0173"; // Obtain this token securely
+            const accessToken = "ya29.a0AfB_byAi074MUrnbvK2Rqo7lFLHcGNjdv7z5ITlF1pY3o254BCHhcjr024wAUVEU54I94EeZalsu1LdDerU2H95DdgDqTvA1hHp_FyLM7YnntGN04ujn55S4-2hJDHn6PcJA7C4THZCYcAXqGzQqXhI5fPpfq4OYfzAMbAaCgYKAUkSARASFQHsvYlst-yaFkfEvDPNWJLdlgBP5A0173"; // Obtain this token securely
             const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
             fetch(apiUrl, {
               method: 'POST',
@@ -62,12 +62,18 @@ const Record = () => {
               body: combinedBlob
               //blob: combinedBlob
                             
-          })}).then(res => res.json()).then(data => {
-            const feedback = data["text"]
-            localStorage.setItem('feedback', feedback)
-    
-            navigate('/feedback')
-            window.location.reload(); 
+          })}).then(data => {
+            fetch('https://ignition-hacks-2023.nn.r.appspot.com/download_mp3', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            }).then(data => {
+              const feedback = data
+              console.log(feedback)
+              localStorage.setItem('feedback', feedback)
+      
+            })
           })
         } catch (error) {
           console.log("error", error)
@@ -118,7 +124,7 @@ const Record = () => {
       <div className='flex justify-center'>
         <div className='flex flex-col'>
           <h1 className='text-center mb-8 text-4xl'>Question: {localStorage.getItem('interview_question')}</h1>
-          <Webcam audio={true} ref={webcamRef} className='rounded-2xl'/>
+          <Webcam audio={true} ref={webcamRef} className='rounded-2xl max-w-1'/>
           <div className='flex justify-around mt-8'>
           <button onClick={handleStartRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Start Recording</button>
           <button onClick={handleStopRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Stop Recording</button>

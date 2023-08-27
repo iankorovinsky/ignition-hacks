@@ -47,7 +47,7 @@ const Form = () => {
                         <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
                             <option value="behavioural">behavioural</option>
                             <option value="situational">situational</option>
-                            <option value="motivational">motivational</option>
+                            <option value="motivation">motivational</option>
                             <option value="personal">personal</option>
                         </select>
                     </div>
