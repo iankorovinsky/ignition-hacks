@@ -67,10 +67,11 @@ const Record = () => {
             fetch('https://ignition-hacks-2023.nn.r.appspot.com/download_mp3', {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
               },
-            }).then(data => {
-              const feedback = data
+            }).then(data2 => {
+              console.log("data2", data2)
+              const feedback = data2["feedback"]
               console.log(feedback)
               localStorage.setItem('feedback', feedback)
       
@@ -137,3 +138,5 @@ const Record = () => {
 }
 
 export default Record
+
+
