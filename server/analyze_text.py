@@ -2,7 +2,7 @@ import openai
 import os
 import re
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def generate_text(question, text):
         response = openai.ChatCompletion.create(

@@ -1,0 +1,4 @@
+Flask==2.3.2
+moviepy==1.0.3
+openai==0.27.8
+Requests==2.31.0

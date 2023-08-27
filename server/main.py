@@ -8,8 +8,8 @@ from flask import Flask, request
 #API
 
 app = Flask(__name__)
-api = Api(app)
 
+question_spawned = ""
 
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
@@ -18,14 +18,13 @@ def welcome():
 @app.route('/get_question', methods=['POST'])
 def get_question():
     question = questions.get_question(request.args["type"], request.args["difficulty"])
-    return {
-        "question": question
-    }
+    question_spawned = question
+    return question
 
 @app.route('/get_analysis', methods=['POST'])
 def get_analysis():
     text = vta.get_text(request.args["blob"])
-    feedback = analyze_text.generate_text(request.args["question"], text)
+    feedback = analyze_text.generate_text(question_spawned, text)
     return feedback
 
 if __name__ == '__main__':
