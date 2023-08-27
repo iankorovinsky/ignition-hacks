@@ -46,15 +46,19 @@ const Record = () => {
   
             body: formData
           }).then(res => res.json()).then((data) => {
-            fetch('https://ignition-hacks-2023.nn.r.appspot.com/upload ', {
+            const bucketName = 'ignition-hacks-2023.appspot.com';
+            const fileName = 'audio.webm';
+            const accessToken = "ya29.a0AfB_byDrEdLc6pCfruAa-RYhmyIWbvi4E_fHDm5pWwiaNDv_DWAu9PzWIE8mkvWUkrw6wMa-C8kxqoW0w-3DJYyWbhyUwsfwIphVa0FiKjitSBeH0PUUw-w_ulYbzIQHp2TKH0Jn0xe6nGVn_XLgQOJDD4uUG81VVIS-LwaCgYKAXESARASFQHsvYlsgJxCGOqy3sHf_J2dhEg2pw0173"; // Obtain this token securely
+            const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
+            fetch(apiUrl, {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'audio/webm',
               },
-              body: JSON.stringify({
-                //blob: combinedBlob
-                audio: formData2 
-              })
+              body: combinedBlob
+              //blob: combinedBlob
+                            
           })}).then(res => console.log('blob sent!!!'))
         } catch (error) {
           console.log("error", error)

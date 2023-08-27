@@ -13,7 +13,9 @@
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
+    "react-simple-typewriter": "^5.0.1",
     "react-webcam": "^7.1.1",
+    "typewriter-effect": "^2.20.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

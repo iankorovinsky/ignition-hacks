@@ -35,11 +35,11 @@ const Form = () => {
     }
 
   return (
-    <div className='relative w-full h-[1050px] overflow-hidden text-left text-[24px] text-dimgray font-inter'>
-        <div className='p-24 rounded-xl text-white'>
-            <h1 className='text-center text-8xl font-bold'>Select Your</h1>
-            <h1 className='text-center text-8xl font-bold text-[#B489E1]'>Interview</h1>
-            <div className='flex justify-center'>
+    <div className='relative w-full h-screen overflow-hidden text-left text-[24px] text-dimgray font-inter text-white'>
+        <div className='p-24 rounded-xl text-violet-100'>
+        <h1 className='text-center text-8xl font-bold'>Select Your</h1>
+        <h1 className='text-center text-8xl font-bold text-[#B489E1]'>Interview</h1>
+        <div className='flex justify-center'>
             <form
                     className="flex flex-col gap-2 mt-2"
                     onSubmit={onSubmit}
@@ -65,7 +65,6 @@ const Form = () => {
                 </form>
             </div>
         </div>
-
     </div>
   )
 }
