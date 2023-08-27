@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react';
@@ -12,7 +12,9 @@ import SpleefAI from '../pictures/spleefai.png'
 
 import './component-styles/Navbar.css'
 
-function Navbar() {
+const Navbar = () => {
+  const navigate = useNavigate()
+
   const firebaseConfig = {
     apiKey: "AIzaSyALlVGx3v1ixm29J62jxOA88UUM7P1FaYQ",
     authDomain: "ignitionhacks-36c06.firebaseapp.com",
@@ -123,6 +125,14 @@ function Navbar() {
       priority: false
   }
 ]
+
+useEffect(() => {
+    if (localStorage.getItem('name') == 'null') {
+      navigate('/') 
+    } else {
+        setLoggedIn(true)
+    }
+  }, [])
 
     return (
       <div className='flex justify-center mb-40'>

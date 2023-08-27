@@ -10,11 +10,7 @@ const Form = () => {
     const [difficulty, setDifficulty] = useState("easy");
     const navigate = useNavigate(); // in case needed to navigate anywhere
 
-    useEffect(() => {
-        if (localStorage.getItem('name') == 'null') {
-          navigate('/') 
-        }
-      }, [])
+
 
     const onSubmit = async (e) => {
         e.preventDefault()

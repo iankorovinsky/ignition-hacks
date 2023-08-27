@@ -6,11 +6,7 @@ import './page-styles/Feedback.css'
 const Feedback = () => {
   const navigate = useNavigate();
   
-  useEffect(() => {
-    if (localStorage.getItem('name') == 'null') {
-      navigate('/') 
-    }
-  }, [])
+
 
   return (
     <div className="relative w-full h-screen overflow-hidden text-left text-[24px] text-dimgray font-inter">

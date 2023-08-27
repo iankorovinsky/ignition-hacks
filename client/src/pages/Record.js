@@ -13,12 +13,7 @@ const Record = () => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-      if (localStorage.getItem('name') == 'null') {
-        navigate('/') 
-      }
-    }, [])
-
+ 
     const handleConvertToBinary = async () => {
         console.log('starting conversion')
         console.log(recordedChunks)
@@ -57,7 +52,7 @@ const Record = () => {
           }).then(res => res.json()).then((data) => {
             const bucketName = 'ignition-hacks-2023.appspot.com';
             const fileName = 'audio.webm';
-            const accessToken = "ya29.a0AfB_byAi074MUrnbvK2Rqo7lFLHcGNjdv7z5ITlF1pY3o254BCHhcjr024wAUVEU54I94EeZalsu1LdDerU2H95DdgDqTvA1hHp_FyLM7YnntGN04ujn55S4-2hJDHn6PcJA7C4THZCYcAXqGzQqXhI5fPpfq4OYfzAMbAaCgYKAUkSARASFQHsvYlst-yaFkfEvDPNWJLdlgBP5A0173"; // Obtain this token securely
+            const accessToken = "ya29.a0AfB_byBz_SVcGemzdD5UysPvVop_CwwZoxXKUhoWum_tsnPN3_y7kIT0C_bF8LGOX87IxcFQfcq3RaE2XWkyX9IqlK16406ArCXep4MnIXFBvh0w0OyVPN3GZ4BE827YbWixCalKbBJvlgiGLjWlNUmNE7XdORkDCAvQjQaCgYKAaQSARASFQHsvYlsQ6orCi33o9aHC3tA1eBVGw0173"; // Obtain this token securely
             const apiUrl = `https://storage.googleapis.com/upload/storage/v1/b/${bucketName}/o?uploadType=media&name=${fileName}`;
             fetch(apiUrl, {
               method: 'POST',
