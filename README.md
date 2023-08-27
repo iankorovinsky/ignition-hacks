@@ -1,4 +1,4 @@
-# ignition-hacks
+# 
 
 
 ## 💡 Inspiration Behind spleef.ai 🌍
@@ -17,13 +17,21 @@ Join us on this exciting journey as we fuse the prowess of AI with the aspiratio
 
 ## 🎙️ What spleef.ai does 🚀
 
-spleef.ai is an innovative interview assistant that employs cutting-edge AI technology to provide you with real-time feedback on your interview question responses. 🤖🎤
+A user starts on the landing page, where they have the option to get started on their interview training. At first, they are directed to a screen where they can choose what type of question they want to practice. The difficulties are easy, medium, and hard, and there are four categories of questions:
 
-Upon starting, users are guided to a screen where they can select the type of question they wish to practice. The options include a range of difficulty levels: easy, medium, and hard and different interview category formats: behavioural, situational, motivational, and personal. This versatility ensures that users can tailor their practice to match their specific interview needs. 📝🔍
+- Behavioural:  Ask about past experiences to assess skills and behavior
+- Motivation and Fit: Ask about enthusiasm and cultural alignment
+- Situational: Ask about hypothetical scenarios to evaluate decision-making
+- Personal: Ask about personal interests and values
 
-Having made their selection, users are presented with the generated interview question. This dynamic aspect of spleef.ai ensures that every practice session is unique, mirroring the unpredictability of real interviews. Once users feel prepared to tackle the question, they can start recording their responses. The platform seamlessly integrates with your device's recording capabilities, making the process straightforward and intuitive. 🎥🔴
+After they select the type of question, they are able to see the question, and once they are ready to start answering the question, they are able to start recording. They record their response, and their response is sent to our AI processes for parsing. After processing is complete, users can advance to the next page to view the feedback on their responses, particularly how they can improve their responses in the sections of:
 
-And here's where the magic truly happens! Once the response recording is complete, spleef.ai's AI engine kicks into action. It meticulously analyzes your response, considering factors like content, coherence, tone, and more. Within moments, you'll receive comprehensive feedback on your performance. This feedback isn't generic; it's tailored to your specific response and provides insights that guide you toward improvement. Whether it's pointing out areas for enhancement, highlighting strengths, or suggesting ways to structure your answers more effectively – the feedback is your personalized roadmap to success. 🗺️📊
+- Professionalism: Did the response adhere to the rules of business etiquette?
+- Creativity: Was the response detailed and include many different specifics?
+- Clarity: Was the response clear?
+- Originality: Was the response original and out-of-the-box?
+
+Moreover, the AI provides a sample response that is better than what the user gave, showing the user what an improved response looks like, allowing them to see how they can improve. Once they have read their feedback, they can go back and try a new question!
 
 
 ## 💬 How we built spleef.ai 🛠️

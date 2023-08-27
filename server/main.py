@@ -6,6 +6,7 @@ import analyze_text
 from flask import Flask, request
 from flask_cors import CORS
 import logging
+import os
 
 #API
 
@@ -38,6 +39,18 @@ def get_analysis():
     print("received feedback, returning:")
     print(feedback)
     return feedback
+
+@app.route("/upload", methods=["POST"])
+def upload():
+    audio_file = request.files.get("audio")
+    if audio_file:
+        filename = os.path.join("uploads", "audio.webm")
+        audio_file.save(filename)
+        print("success")
+        return "File uploaded successfully", 200
+    else:
+        print("failed")
+        return "No file uploaded", 400
 
 if __name__ == '__main__':
     app.run(debug=True)
