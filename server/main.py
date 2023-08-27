@@ -4,10 +4,12 @@ import questions
 import requests
 import analyze_text
 from flask import Flask, request
+from flask_cors import CORS
 
 #API
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 question_spawned = ""
 
