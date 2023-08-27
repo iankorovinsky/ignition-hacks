@@ -5,15 +5,23 @@ import requests
 import analyze_text
 from flask import Flask, request
 from flask_cors import CORS
-import logging
-import os
-
+from google.cloud import storage
+import openai
+import assemblyai as aai
 #API
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 question_spawned = ""
+
+# Initialize the Google Cloud Storage client
+storage_client = storage.Client()
+
+aai.settings.api_key = "API-KEY"
+
+# Create a transcriber object.
+transcriber = aai.Transcriber()
 
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
@@ -24,33 +32,38 @@ def welcome():
 def get_question():
     question = questions.get_question(request.args["type"], request.args["difficulty"])
     question_spawned = question
-    return question
+    return {
+        "text": question
+    }
 
-@app.route('/get_analysis', methods=['POST'])
-def get_analysis():
-    print("Entering get text method")
-    try:
-        text = vta.get_text(request.args["blob"])
-    except Exception as error:
-        # handle the exception
-        print("An exception occurred:", error)
-    print("received text to speech in main")
+@app.route('/download_mp3', methods=['POST'])
+def download_mp3():
+    """
+    # Define your bucket and blob name
+    bucket_name = "ignition-hacks-2023.appspot.com"
+    blob_name = "audio.webm"
+    # Get the bucket and blob
+    print("getting bucket")
+    bucket = storage_client.get_bucket(bucket_name)
+    print(f"got bucket: {bucket}, getting blob")
+    blob = bucket.blob(blob_name)
+    print(f"got blob: {blob}, getting webm")
+    # Download the blob's content into a bytes variable
+    webm_content = blob.download_as_bytes()
+    print("got webm, getting whisper")
+    """
+    print("getting aai")
+    transcript = transcriber.transcribe("https://storage.cloud.google.com/ignition-hacks-2023.appspot.com/audio.webm")
+    print("got response, getting text")
+    text = transcript.text
+    print(f"text: {text}")
     feedback = analyze_text.generate_text(question_spawned, text)
-    print("received feedback, returning:")
-    print(feedback)
-    return feedback
+    print(f"feedback: {feedback}")
+    return {
+        "text": feedback
+    }
 
-@app.route("/upload", methods=["POST"])
-def upload():
-    audio_file = request.files.get("audio")
-    if audio_file:
-        filename = os.path.join("uploads", "audio.webm")
-        audio_file.save(filename)
-        print("success")
-        return "File uploaded successfully", 200
-    else:
-        print("failed")
-        return "No file uploaded", 400
+
 
 if __name__ == '__main__':
     app.run(debug=True)

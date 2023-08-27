@@ -2,7 +2,7 @@ import openai
 import os
 import re
 
-openai.api_key = "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"
+openai.api_key = "API-KEY"
 
 def generate_text(question, text):
         print("generating gpt")

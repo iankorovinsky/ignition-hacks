@@ -2,4 +2,7 @@ Flask==2.3.2
 Flask_Cors==4.0.0
 moviepy==1.0.3
 openai==0.27.8
+protobuf==4.24.2
 Requests==2.31.0
+google-cloud-storage==2.10.0
+assemblyai==0.17.0
