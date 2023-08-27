@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { json } from 'react-router-dom';
@@ -9,6 +10,8 @@ const Record = () => {
     const mediaRecorderRef = useRef(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
     const [isRecordingStopped, setIsRecordingStopped] = useState(false);
+
+    const navigate = useNavigate()
 
     const handleConvertToBinary = async () => {
         console.log('starting conversion')
@@ -59,7 +62,13 @@ const Record = () => {
               body: combinedBlob
               //blob: combinedBlob
                             
-          })}).then(res => console.log('blob sent!!!'))
+          })}).then(res => res.json()).then(data => {
+            const feedback = data["text"]
+            localStorage.setItem('feedback', feedback)
+    
+            navigate('/feedback')
+            window.location.reload(); 
+          })
         } catch (error) {
           console.log("error", error)
         }
@@ -105,11 +114,17 @@ const Record = () => {
       }, [isRecordingStopped]);
 
   return (
-    <div>
-      <Webcam audio={true} ref={webcamRef} />
-      <button onClick={handleStartRecording}>Start Recording</button>
-      <button onClick={handleStopRecording}>Stop Recording</button>
-      <h1>asdsad</h1>
+    <div className='h-screen text-white'>
+      <div className='flex justify-center'>
+        <div className='flex flex-col'>
+          <h1 className='text-center mb-8 text-4xl'>Question: {localStorage.getItem('interview_question')}</h1>
+          <Webcam audio={true} ref={webcamRef} className='rounded-2xl'/>
+          <div className='flex justify-around mt-8'>
+          <button onClick={handleStartRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Start Recording</button>
+          <button onClick={handleStopRecording} type='submit' className='text-white px-6 py-3 rounded-xl text-xl hover:opacity-100 transition ease-in-out duration-100 font-bold [background:linear-gradient(90deg,_rgba(109,_149,_237,_0.8),_rgba(231,_123,_240,_0.8))]'>Stop Recording</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

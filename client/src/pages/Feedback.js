@@ -36,12 +36,7 @@ const Feedback = () => {
           <div className="absolute top-[83px] left-[116px] flex items-center w-[663px] h-[198px]">
             <span className="[line-break:anywhere] w-full">
               <p className="m-0">
-                This is the actual feedback. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur.
+                {localStorage.getItem('feedback')}
               </p>
             </span>
           </div>

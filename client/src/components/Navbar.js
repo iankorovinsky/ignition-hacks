@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa'
 
+import SpleefAI from '../pictures/spleefai.png'
+
 import './component-styles/Navbar.css'
 
 function Navbar() {
@@ -81,16 +83,16 @@ function Navbar() {
           initial='hidden'
           animate='visible'
           exit='exit'
-          className={`navbar z-[99999999] py-2 lg:py-4 fixed w-full top-0 ${fillNavbar ? 'fill' : ''}`}
+          className={`navbar z-[99999999] py-2 lg:py-1 fixed w-full top-0 ${fillNavbar ? 'fill' : ''}`}
         >
           <div className="px-4 mx-auto flex flex-col lg:flex-row lg:items-center justify-center h-full">
             <div className="flex justify-between items-center">
               <Link to='/'>
-                <h1>Will replace with Logo</h1>
+                <img src={SpleefAI} className='h-16 object-cover'/>
               </Link>
     
               <button
-                className="border-none px-3 py-1 rounded text-gray-200 bg-green-200 opacity-75 hover:opacity-100 lg:hidden cursor-pointer"
+                className="border-none px-3 py-1 rounded text-gray-200 bg-violet-200 hover:opacity-100 lg:hidden cursor-pointer"
                 aria-label="Menu"
                 data-test-id="navbar-menu"
                 onClick={
@@ -98,14 +100,14 @@ function Navbar() {
                       setShowDropdown(!showDropdown);
                   }}
               >
-                <FaBars size={20} color="#8bcc9a"/>
+                <FaBars size={20} color="#D4BCF5"/>
               </button>
             </div>
          
             <div className={`${showDropdown ? "flex" : "hidden"} flex-col lg:flex  lg:flex-row lg:ml-auto mt-3 lg:mt-0`} data-test-id="navbar">
               <div>
                 {links.map(({ name, link, priority, id }) => 
-                  <Link key={name}  to={link} className='md:text-xl text-lg lg:mx-2 mx-0 hover:bg-gray-200/25 hover:bg-opacity-10 hover:bg-black p-2 lg:px-4 rounded duration-300 transition-colors'>
+                  <Link key={name}  to={link} className='md:text-2xl text-lg lg:mx-2 mx-0 hover:bg-gray-200/25 hover:bg-opacity-10 hover:bg-black p-2 lg:px-4 rounded duration-300 transition-colors'>
                       {name}
                   </Link>
                 )}
