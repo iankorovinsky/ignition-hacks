@@ -4,26 +4,13 @@ import { useNavigate, Link } from 'react-router-dom'
 import './page-styles/Feedback.css'
 
 const Feedback = () => {
-    const onLinkContainer1Click = useCallback(() => {
-      // Please sync "questions" to the project
-    }, []);
-
-    const [data, setData] = useState([]);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   
-    useEffect(() => {
-        fetch(`endpoint-url`, {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          }    
-        }).then(response => response.json())
-        .then(data => {
-          console.log(data)
-          setData(data)}
-        )
-        
-      }, [])
+  useEffect(() => {
+    if (localStorage.getItem('name') == 'null') {
+      navigate('/') 
+    }
+  }, [])
 
   return (
     <div className="relative w-full h-screen overflow-hidden text-left text-[24px] text-dimgray font-inter">

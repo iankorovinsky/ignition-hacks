@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaImage } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
 import './page-styles/Form.css'
@@ -9,6 +9,12 @@ const Form = () => {
     const [genre, setGenre] = useState("behavioural");
     const [difficulty, setDifficulty] = useState("easy");
     const navigate = useNavigate(); // in case needed to navigate anywhere
+
+    useEffect(() => {
+        if (localStorage.getItem('name') == 'null') {
+          navigate('/') 
+        }
+      }, [])
 
     const onSubmit = async (e) => {
         e.preventDefault()

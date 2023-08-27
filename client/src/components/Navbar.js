@@ -47,6 +47,7 @@ function Navbar() {
   const signOut = () => {
     firebase.auth().signOut()
         .then(() => {
+            localStorage.setItem('name', null)
         console.log('Signed out successfully');
         setLoggedIn(!loggedIn)
     })

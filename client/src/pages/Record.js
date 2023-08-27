@@ -13,6 +13,12 @@ const Record = () => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+      if (localStorage.getItem('name') == 'null') {
+        navigate('/') 
+      }
+    }, [])
+
     const handleConvertToBinary = async () => {
         console.log('starting conversion')
         console.log(recordedChunks)
