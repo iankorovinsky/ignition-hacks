@@ -1,6 +1,3 @@
-# spleef.ai (Ignition Hacks 2023) 
-
-
 ## 💡 Inspiration Behind spleef.ai 🌍
 
 At spleef.ai, our journey began with a simple question: What kind of challenge could we help aspiring professionals overcome? 🚀💼
@@ -13,34 +10,31 @@ Our goal became clear: to create a companion that harnesses the power of AI to s
 
 As we embarked on this mission, the name "spleef.ai" naturally fell into place, signifying our fusion of speech (speak) and guidance (feedback). With unwavering determination, we set out to create an innovative solution that would revolutionize the interview preparation experience. 💬🗂️
 
-Join us on this exciting journey as we fuse the prowess of AI with the aspirations of job seekers, redefining interview preparation into an uplifting and growth-inducing experience! 🚀🌱
-
 ## 🎙️ What spleef.ai does 🚀
 
 A user starts on the landing page, where they have the option to get started on their interview training. At first, they are directed to a screen where they can choose what type of question they want to practice. The difficulties are easy, medium, and hard, and there are four categories of questions:
 
-- Behavioural:  Ask about past experiences to assess skills and behavior
+- Behavioural:  Ask about past experiences to assess skills and behaviour
 - Motivation and Fit: Ask about enthusiasm and cultural alignment
 - Situational: Ask about hypothetical scenarios to evaluate decision-making
 - Personal: Ask about personal interests and values
 
-After they select the type of question, they are able to see the question, and once they are ready to start answering the question, they are able to start recording. They record their response, and their response is sent to our AI processes for parsing. After processing is complete, users can advance to the next page to view the feedback on their responses, particularly how they can improve their responses in the sections of:
+After they select the type of question, they move on to the recording screen and are able to see the question. Once they are ready to start answering the question, they are able to start recording. They record their response, and their response is sent to our AI processes for parsing. After processing is complete, users can advance to the next page to view feedback on their responses, particularly how they can improve their responses in the sections of:
 
 - Professionalism: Did the response adhere to the rules of business etiquette?
-- Creativity: Was the response detailed and include many different specifics?
+- Creativity: Was the response detailed and did it include many specifics?
 - Clarity: Was the response clear?
 - Originality: Was the response original and out-of-the-box?
 
-Moreover, the AI provides a sample response that is better than what the user gave, showing the user what an improved response looks like, allowing them to see how they can improve. Once they have read their feedback, they can go back and try a new question!
-
+Moreover, the AI provides a sample response that is better than what the user gave, showing the user what an improved response looks like, and allowing them to see how they can take their interview game to the next level. Once they have read their feedback, they can go back and try a new question!
 
 ## 💬 How we built spleef.ai 🛠️
 
-For the front-end, we used Figma to design the visual design of the prototype. After validating the design, we used React, JavaScript, and Tailwind CSS to design the front-end. The logic for the camera and audio capture was coded on the front-end in JS, and data was transferred to the backend via blob objects.
+For the front-end, we used Figma to design the visual design of the prototype. After validating the design, we used React, JavaScript, and Tailwind CSS to code the front-end. The logic for the camera and audio capture was coded on the front-end in JS, and data was transferred to the backend via upload to a bucket using the Google Cloud Storage API.
 
-For the back-end, we built it in Flask using Python, integrating the Whisper AI API for speech-to-text and GPT-3.5-Turbo API with engineered prompts for generating feedback. In order to retrieve the data, it was necessary to send POST requests to the server, and the data was returned as strings.
+For the back-end, we built it in Flask using Python, integrating the AssemblyAI API for speech-to-text and GPT-3.5-Turbo API with engineered prompts for generating feedback. In order to retrieve the data, it was necessary to send POST requests to the hosted Flask server on Google Cloud App Engine, retrieve the uploaded content from the Google Cloud Storage, parse the data, and return the responses as strings.
 
-In an effort to cloud-host our project, we deployed our front-end on Vercel, which makes calls to our back-end which is hosted on Google Cloud using the App Engine.
+In an effort to cloud-host our project, we deployed our front-end on Vercel, which makes calls to our back-end which is hosted on Google Cloud using the Google Cloud App Engine.
 
 ## 🛠️ Challenges We Overcame at spleef.ai 🚧
 
@@ -52,8 +46,8 @@ Deploying our AI-powered interview assistant on Google Cloud presented a unique 
 ### 🔄 Converting Figma Prototype to React: Difficult Design 🎨
 Translating our creative visions from a Figma prototype to a functional React application posed a formidable challenge. The intricacies of design integration and maintaining the visual essence while ensuring seamless user interactions were no small feat. Through iterative design refinements and meticulous coding, we transformed our ambitious designs into a user-friendly reality.
 
-### 💾 Parsing Data without Saving Audio as Files 📊
-One of the challenges we encountered was parsing interview audio data without the luxury of saving audio files due to backend constraints hosted on Google Cloud. This required us to engineer an elegant solution for processing and analyzing data on the fly, utilizing variables without relying on traditional file storage methods. We devised an efficient method to handle and glean insights from this real-time data flow.
+### 💾 CORS Errors📊
+One that stands out over this entire process is dealing with CORS (Cross-Origin Resource Sharing) errors when deploying to Google Cloud. After diving deep into documentation and consulting various online forums, we implemented a robust CORS policy to allow only specified origins to access our resources. This not only enhanced our security but also paved the way for seamless integration of services. 
 
 ## 🌟 Accomplishments We Celebrate at spleef.ai 🏆🎉
 
@@ -95,8 +89,3 @@ Technical interviews can be a daunting challenge. That's why we're expanding spl
 As we embark on this exciting journey into the future, the core essence of spleef.ai remains unchanged – to empower individuals, nurture their growth, and pave their way to interview success. Through continuous innovation and a commitment to excellence, we're poised to redefine interview preparation as we know it. 
 
 Join us as we revolutionize the art of mastering interviews with spleef.ai! 🚀🔮
-
-
-
-
-

@@ -2,7 +2,7 @@ import openai
 import os
 import re
 
-openai.api_key = "API-KEY"
+openai.api_key = "API_KEY"
 
 def generate_text(question, text):
         print("generating gpt")
@@ -15,7 +15,7 @@ def generate_text(question, text):
                 }
             ],
             temperature=0,
-            max_tokens=4000,
+            max_tokens=3500,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0.6,
@@ -25,7 +25,5 @@ def generate_text(question, text):
         print(content)
         print("returning gpt")
         return content
-
-
 
 
