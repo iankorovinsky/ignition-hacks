@@ -10,7 +10,7 @@ import Feedback from './pages/Feedback'
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App [background:linear-gradient(90deg,_rgba(20,_0,_60,_0.9),_rgba(30,_0,_30,_0.9))]">
       <BrowserRouter>
           <Suspense fallback={<div>Page Loading...</div>}>
           <Navbar />

@@ -8,7 +8,6 @@ const Record = () => {
     const webcamRef = useRef(null);
     const mediaRecorderRef = useRef(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
-    const [blobData, setBlobData] = useState();
     const [isRecordingStopped, setIsRecordingStopped] = useState(false);
 
     const handleConvertToBinary = async () => {
@@ -35,7 +34,10 @@ const Record = () => {
     
           const formData = new FormData();
           formData.append("file", file);
-        
+
+          const formData2 = new FormData();
+          formData.append("audio", combinedBlob)
+
           const response = fetch("https://api.nftport.xyz/v0/files", {
             method: "POST",
             headers: {
@@ -44,13 +46,14 @@ const Record = () => {
   
             body: formData
           }).then(res => res.json()).then((data) => {
-            fetch('https://ignition-hacks-2023.nn.r.appspot.com/get_analysis ', {
+            fetch('https://ignition-hacks-2023.nn.r.appspot.com/upload ', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                blob: combinedBlob
+                //blob: combinedBlob
+                audio: formData2 
               })
           })}).then(res => console.log('blob sent!!!'))
         } catch (error) {
